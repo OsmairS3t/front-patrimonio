@@ -18,7 +18,7 @@ export default function Grupo() {
     }, []);
 
     return (
-        <div className="flex flex-col justify-between pt-4">
+        <div className="container flex flex-col justify-between pt-4">
             <h2 className="flex justify-start items-center h-10 bg-blue-100 font-semibold px-4">CADASTRO DE GRUPOS</h2>
 
             <div className="flex justify-end m-2">

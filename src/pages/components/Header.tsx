@@ -1,14 +1,15 @@
-import Link from "next/link";
-import React from "react";
+import React from 'react';
+import Link from 'next/link';
 
-export default function Header() {
+const Header: React.FC = () => {
     return (
-        <div>
-            <div className='w-full h-32 bg-gray-300 p-4'>
-
+        <div className='flex flex-col border-b-2 border-black bg-gray-300'>
+            <div className='h-30 border-2 p-4'>
+                <h2>Header</h2>
             </div>
+
             <div className='flex flex-row justify-start space-x-10 items-center h-20 bg-blue-700 text-white pl-7 p-2'>
-                <Link href='/' className='flex flex-col justify-center items-center text-center hover:bg-blue-500 w-16 h-20'>
+                <Link href='/' className='flex flex-col justify-center items-center text-center hover:bg-blue-500 w-32 h-20'>
                     <svg className="h-8 w-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <line x1="3" y1="12" x2="21" y2="12" />
                         <line x1="3" y1="6" x2="21" y2="6" />
@@ -81,3 +82,5 @@ export default function Header() {
         </div>
     )
 }
+
+export default Header;
