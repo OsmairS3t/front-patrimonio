@@ -1,22 +1,14 @@
 import React from 'react';
 import Link from 'next/link';
 
-const Header: React.FC = () => {
+export default function Header() {
     return (
         <div className='flex flex-col border-b-2 border-black bg-gray-300'>
-            <div className='h-30 border-2 p-4'>
-                <h2>Header</h2>
+            <div className='flex justify-center items-center text-5xl text-white h-40 border-2 p-4 bg-[url("/assets/header_patrimonio.jpg")] bg-center bg-cover'>
+                <h2>CONTROLE DE PATRIMÔNIO</h2>
             </div>
 
             <div className='flex flex-row justify-start space-x-10 items-center h-20 bg-blue-700 text-white pl-7 p-2'>
-                <Link href='/' className='flex flex-col justify-center items-center text-center hover:bg-blue-500 w-32 h-20'>
-                    <svg className="h-8 w-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="3" y1="12" x2="21" y2="12" />
-                        <line x1="3" y1="6" x2="21" y2="6" />
-                        <line x1="3" y1="18" x2="21" y2="18" />
-                    </svg>
-                    Menu
-                </Link>
 
                 <Link href='/' className='flex flex-col justify-center items-center text-center hover:bg-blue-500 w-32 h-20'>
                     <svg className="h-8 w-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -69,18 +61,8 @@ const Header: React.FC = () => {
                     </svg>
                     Usuários
                 </Link>
-
-                <Link href='/financeiro' className='flex flex-col justify-center items-center text-center hover:bg-blue-500 w-32 h-20'>
-                    <svg className="h-8 w-8 text-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" />
-                        <path d="M16.7 8a3 3 0 0 0 -2.7 -2h-4a3 3 0 0 0 0 6h4a3 3 0 0 1 0 6h-4a3 3 0 0 1 -2.7 -2" />
-                        <path d="M12 3v3m0 12v3" />
-                    </svg>
-                    Financeiro
-                </Link>
             </div>
         </div>
     )
 }
 
-export default Header;
