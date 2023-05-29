@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { usuarios } from '../api/data'
+import Modal from 'react-modal'
+import { FormProduct } from "../components/FormProducts";
 
 interface UsuarioProps {
     id: number;
@@ -8,14 +10,25 @@ interface UsuarioProps {
 }
 
 export default function Usuario() {
+    const [isModalOpen, setIsModalOpen] = useState(false)
     const [users, setUsers] = useState<UsuarioProps[]>(usuarios);
+
+    function handleModal() {
+        setIsModalOpen(!isModalOpen);
+    }
+
+    function handleCreateUser() {
+        setIsModalOpen(true);
+    }
 
     return (
         <div className="flex grow flex-col pt-4">
             <h2>CADASTRO DE USUARIOS</h2>
             <div className="flex justify-end m-2">
                 <input className="border-2 border-gray-200 rounded-lg mr-4 p-4 h-10" type="text" placeholder="Pesquisar" />
-                <button className="w-32 h-10 bg-blue-500 hover:bg-blue-400 rounded-lg font-bold text-white">+ Novo</button>
+                <button onClick={handleCreateUser} className="w-32 h-10 bg-blue-500 hover:bg-blue-400 rounded-lg font-bold text-white">
+                    + Novo
+                </button>
             </div>
 
             {users.map(user => (
@@ -26,6 +39,11 @@ export default function Usuario() {
                     <button className="w-28 h-8 bg-red-500 hover:bg-red-400 rounded-lg text-white">Excluir</button>
                 </div>
             ))}
+
+            <Modal isOpen={isModalOpen}>
+                <FormProduct closeModal={handleModal} />
+            </Modal>
         </div>
     )
 }
+

@@ -1,6 +1,7 @@
 import { api } from "@/lib/axios";
 import React, { useEffect, useState } from "react";
 import Modal from 'react-modal';
+import { FormSubGrupo } from "../components/FormSubGrupos";
 
 interface SubGrupoProps {
     id: number;
@@ -42,14 +43,8 @@ export default function SubGrupo() {
                 </div>
             ))}
 
-            <Modal isOpen={isModalSubGruposOpen}>
-                <div className="flex justify-center w-full h-full p-4">
-                    <button
-                        onClick={handleModal}
-                        className="w-32 h-10 bg-blue-500 hover:bg-blue-400 rounded-lg font-bold text-white">
-                        Fechar
-                    </button>
-                </div>
+            <Modal ariaHideApp={false} isOpen={isModalSubGruposOpen} className="w-1/3 h-2/4 absolute left-1/4 top-1/4">
+                <FormSubGrupo closeModal={handleModal} />
             </Modal>
         </div>
     )
