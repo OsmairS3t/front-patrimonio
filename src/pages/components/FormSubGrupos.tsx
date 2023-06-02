@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { api } from '@/lib/axios';
+import { describe } from 'node:test';
 
 interface Props {
     closeModal: () => void;
 }
 
 const createSubGrupoSchema = z.object({
-    idgrupo: z.string()
+    codgrupo: z.string()
         .nonempty('Favor informe o grupo'),
     descricao: z.string()
         .nonempty('A descrição do sub grupo é obrigatória.')
@@ -20,15 +22,53 @@ const createSubGrupoSchema = z.object({
 })
 
 type createSubGrupoData = z.infer<typeof createSubGrupoSchema>
+type GrupoProps = {
+    id: number;
+    descricao: string;
+}
 
 export function FormSubGrupo({ closeModal }: Props) {
+    const [grupos, setGrupos] = useState<GrupoProps[]>([])
     const { register, handleSubmit, formState: { errors } } = useForm<createSubGrupoData>({
         resolver: zodResolver(createSubGrupoSchema)
     })
 
-    function createSubGrupo(data: any) {
-        console.log(data)
+    // async function updateSubGrupo(data: any) {
+    //     const dataUpdate = {
+    //         id: Number(data.id),
+    //         codgrupo: Number(data.codgrupo),
+    //         descricao: data.descricao
+    //     }
+    //     try {
+    //         const response = await api.put('subgrupos', dataUpdate)
+    //         window.alert(`Subgrupo alterado com sucesso!`)
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
+    // }
+
+    async function createSubGrupo(data: createSubGrupoData) {
+        const dataInclude = {
+            codgrupo: Number(data.codgrupo),
+            descricao: data.descricao
+        }
+        try {
+            const response: createSubGrupoData = await api.post('subgrupos', dataInclude)
+            window.alert(`Subgrupo criado com sucesso!`)
+
+        } catch (error) {
+            console.log(error)
+        }
     }
+
+    async function loadGrupos() {
+        const response = await api.get('grupos')
+        setGrupos(response.data)
+    }
+
+    useEffect(() => {
+        loadGrupos();
+    }, [])
 
     return (
         <form
@@ -38,16 +78,20 @@ export function FormSubGrupo({ closeModal }: Props) {
             <div className='flex justify-center w-full p-2 bg-gray-800 text-xl font-semibold text-gray-50'>INCLUIR SUB-GRUPO</div>
             <div className='flex flex-col gap-4'>
                 <div className='flex flex-col gap-1'>
-                    <label htmlFor='idgrupo' className='font-semibold'>Grupo:</label>
+                    <label htmlFor='codgrupo' className='font-semibold'>Grupo:</label>
                     <select
-                        id='idgrupo'
+                        id='codgrupo'
                         className='border border-zinc-200 shadow-sm rounded h-10 w-72 px-3'
-                        {...register('idgrupo')}
+                        {...register('codgrupo')}
                     >
                         <option value=''>Selecione</option>
-                        <option value='1'>Equipamentos Chácara</option>
+                        {grupos.map(grupo => {
+                            return (
+                                <option key={grupo.id} value={grupo.id}>{grupo.descricao}</option>
+                            )
+                        })}
                     </select>
-                    {errors.idgrupo && <span className='text-red-600 italic text-sm'>{errors.idgrupo.message}</span>}
+                    {errors.codgrupo && <span className='text-red-600 italic text-sm'>{errors.codgrupo.message}</span>}
                 </div>
                 <div className='flex flex-col gap-1'>
                     <label htmlFor='descricao' className='font-semibold'>Descrição:</label>

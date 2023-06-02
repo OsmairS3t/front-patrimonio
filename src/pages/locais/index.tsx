@@ -31,6 +31,7 @@ export default function Local() {
             {locais.map(loc => (
                 <div className="flex justify-between space-x-2 p-4 odd:bg-gray-100 hover:bg-blue-50" key={loc.id}>
                     <span className="flex-1">{loc.descricao}</span>
+                    <span className="flex-1">{loc.filial}</span>
                     <button className="w-28 h-8 bg-green-500 hover:bg-green-400 rounded-lg text-white">Alterar</button>
                     <button className="w-28 h-8 bg-red-500 hover:bg-red-400 rounded-lg text-white">Excluir</button>
                 </div>

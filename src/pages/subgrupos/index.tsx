@@ -7,6 +7,10 @@ interface SubGrupoProps {
     id: number;
     codgrupo: number;
     descricao: string;
+    grupo: {
+        id: number;
+        descricao: string;
+    }
 }
 
 export default function SubGrupo() {
@@ -24,7 +28,7 @@ export default function SubGrupo() {
 
     useEffect(() => {
         loadSubGrupos();
-    }, [])
+    }, [isModalSubGruposOpen === false])
 
     return (
         <div className="flex grow flex-col pt-4">
@@ -36,14 +40,14 @@ export default function SubGrupo() {
 
             {subGrupos.map(subgrupo => (
                 <div className="flex justify-between space-x-2 p-4 odd:bg-gray-100 hover:bg-blue-50" key={subgrupo.id}>
-                    <span className="flex-1">{subgrupo.codgrupo}</span>
+                    <span className="flex-1">{subgrupo.grupo.descricao}</span>
                     <span className="flex-1">{subgrupo.descricao}</span>
                     <button className="w-28 h-8 bg-green-500 hover:bg-green-400 rounded-lg text-white">Alterar</button>
                     <button className="w-28 h-8 bg-red-500 hover:bg-red-400 rounded-lg text-white">Excluir</button>
                 </div>
             ))}
 
-            <Modal ariaHideApp={false} isOpen={isModalSubGruposOpen} className="w-1/3 h-2/4 absolute left-1/4 top-1/4">
+            <Modal ariaHideApp={false} isOpen={isModalSubGruposOpen} className="w-1/3 h-auto absolute left-1/4 top-1/4">
                 <FormSubGrupo closeModal={handleModal} />
             </Modal>
         </div>

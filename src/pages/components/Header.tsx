@@ -18,17 +18,6 @@ export default function Header() {
                     Home
                 </Link>
 
-                <Link href='/ativos' className='flex flex-col justify-center items-center text-center hover:bg-blue-500 w-32 h-20'>
-                    <svg className="h-8 w-8 text-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" />
-                        <polyline points="12 3 20 7.5 20 16.5 12 21 4 16.5 4 7.5 12 3" />
-                        <line x1="12" y1="12" x2="20" y2="7.5" />
-                        <line x1="12" y1="12" x2="12" y2="21" />
-                        <line x1="12" y1="12" x2="4" y2="7.5" />
-                    </svg>
-                    Ativos
-                </Link>
-
                 <Link href='/grupos' className='flex flex-col justify-center items-center text-center hover:bg-blue-500 w-32 h-20'>
                     <svg className="h-8 w-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <rect x="3" y="3" width="7" height="7" />
@@ -44,6 +33,48 @@ export default function Header() {
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14v6m-3-3h6M6 10h2a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2zm10 0h2a2 2 0 002-2V6a2 2 0 00-2-2h-2a2 2 0 00-2 2v2a2 2 0 002 2zM6 20h2a2 2 0 002-2v-2a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2z" />
                     </svg>
                     Sub-Grupos
+                </Link>
+
+                <Link href='/ativos' className='flex flex-col justify-center items-center text-center hover:bg-blue-500 w-32 h-20'>
+                    <svg className="h-8 w-8 text-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" />
+                        <polyline points="12 3 20 7.5 20 16.5 12 21 4 16.5 4 7.5 12 3" />
+                        <line x1="12" y1="12" x2="20" y2="7.5" />
+                        <line x1="12" y1="12" x2="12" y2="21" />
+                        <line x1="12" y1="12" x2="4" y2="7.5" />
+                    </svg>
+                    Ativos
+                </Link>
+
+                <Link href='/centrocusto' className='flex flex-col justify-center items-center text-center hover:bg-blue-500 w-32 h-20'>
+                    <svg className="h-8 w-8 text-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" />
+                        <circle cx="12" cy="12" r="9" />
+                        <line x1="12" y1="3" x2="12" y2="7" />
+                        <line x1="12" y1="21" x2="12" y2="18" />
+                        <line x1="3" y1="12" x2="7" y2="12" />
+                        <line x1="21" y1="12" x2="18" y2="12" />
+                        <line x1="12" y1="12" x2="12" y2="12.01" />
+                    </svg>
+                    Centro de Custo
+                </Link>
+
+                <Link href='/marcas' className='flex flex-col justify-center items-center text-center hover:bg-blue-500 w-32 h-20'>
+                    <svg className="h-8 w-8 text-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" />
+                        <circle cx="12" cy="12" r="1" />
+                        <circle cx="12" cy="12" r="5" />
+                        <circle cx="12" cy="12" r="9" stroke-dasharray=".001 4.03" />
+                    </svg>
+                    Marcas
+                </Link>
+
+                <Link href='/motivos' className='flex flex-col justify-center items-center text-center hover:bg-blue-500 w-32 h-20'>
+                    <svg className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+
+                    Motivos
                 </Link>
 
                 <Link href='/locais' className='flex flex-col justify-center items-center text-center hover:bg-blue-500 w-32 h-20'>
